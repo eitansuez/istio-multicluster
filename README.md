@@ -194,6 +194,8 @@ Note: the 10.124.6.4 address is the local pod ip for helloworld (cluster2), whil
 
 ### Observations
 
+1. There's an implicit rule here that multiple services bearing the same fully-qualified name (in this case `helloworld.default.svc.cluster.local`) are considered, or coalesced into a single logical service that spans the whole mesh.
+
 1. The main observation is that this exercise confirms that service discovery is mesh-wide, even in the face of workloads residing in separate clusters.
 Further, service discovery and propagation of that information to the envoys happens automatically and transparently, as it should, just like in the simpler case of workloads residing in a single-cluster.
 

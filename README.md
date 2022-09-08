@@ -194,6 +194,9 @@ Note: the 10.124.6.4 address is the local pod ip for helloworld (cluster2), whil
 
 ### Observations
 
-If I were to scale helloworld-v1 on cluster1 to 2 replicas, the number of endpoints for the helloworld cluster on the sleep pod in cluster2 would not change, because the two endpoints in cluster1 both have technically the same target address, the east-west gateway on cluster1.
+1. The main observation is that this exercise confirms that service discovery is mesh-wide, even in the face of workloads residing in separate clusters.
+Further, service discovery and propagation of that information to the envoys happens automatically and transparently, as it should, just like in the simpler case of workloads residing in a single-cluster.
 
-The inference here is that the east-west gateway (on cluster1) receiving the request from cluster2 will load-balance requests across the two helloworld instances residing on its side, on its cluster.
+1. If I were to scale helloworld-v1 on cluster1 to 2 replicas, the number of endpoints for the helloworld cluster on the sleep pod in cluster2 would not change, because the two endpoints in cluster1 both have technically the same target address, the east-west gateway on cluster1.
+
+    The inference here is that the east-west gateway (on cluster1) receiving the request from cluster2 will load-balance requests across the two helloworld instances residing on its side, on its cluster.

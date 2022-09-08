@@ -11,7 +11,7 @@ gcloud container clusters create central-cluster \
   --num-nodes "3" \
   --network "network1" \
   --subnetwork "network1-subnet" \
-  --region "us-central1"
+  --zone "us-central1-a"
 ```
 
 ```shell
@@ -21,7 +21,7 @@ gcloud container clusters create east-cluster \
   --num-nodes "3" \
   --network "network2" \
   --subnetwork "network2-subnet" \
-  --region "us-east1"
+  --zone "us-east1-b"
 ```
 
 ## Create common root of trust
